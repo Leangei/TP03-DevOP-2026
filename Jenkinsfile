@@ -1,8 +1,7 @@
 pipeline {
-    agent { label 'LaravelAgent' }
-
-    tools {
-        git 'LinuxGit'
+    agent { 
+	label 'LaravelAgent'
+	tool 'LinuxGit' 
     }
 
     environment {
