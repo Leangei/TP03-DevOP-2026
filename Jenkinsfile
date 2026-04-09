@@ -1,6 +1,7 @@
 pipeline {
     agent {
-        label 'laravel'
+        label 'LaravelAgent'
+        tool 'LinuxGit'
     }
 
     stages {
