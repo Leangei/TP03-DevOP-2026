@@ -1,11 +1,13 @@
 pipeline {
-    agent {
-        label 'LaravelAgent'
-        tool 'LinuxGit'
-        environment {
-            WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
-        }
-    } // <-- close agent block
+    agent { label 'LaravelAgent' }  // Only one type here
+
+    environment {
+        WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
+    }
+
+    tools {
+        git 'LinuxGit'  // Specify Git tool here
+    }
 
     stages {
         stage('Build') {
@@ -44,5 +46,5 @@ pipeline {
                 sh 'ansible-playbook -i inventory/hosts.ini deploy.yml'
             }
         }
-    } // <-- close stages block
-} // <-- close pipeline block
+    }
+}
