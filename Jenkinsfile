@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'LaravelAgent'
         tool 'LinuxGit'
+        environment {
+        WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
+    }
     }
 
     stages {
