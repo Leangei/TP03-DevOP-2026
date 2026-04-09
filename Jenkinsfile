@@ -1,8 +1,5 @@
 pipeline {
-    agent { 
-	label 'LaravelAgent'
-	tool 'LinuxGit' 
-    }
+    agent { label 'LaravelAgent' }  // Only one agent specification here
 
     environment {
         WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
@@ -13,6 +10,10 @@ pipeline {
             steps {
                 echo 'Building...'
                 checkout scm
+
+                // Use Git tool if needed
+                tool name: 'LinuxGit', type: 'Git'
+
                 sh 'cp .env.example .env'
                 sh 'composer install'
                 sh 'npm install'
@@ -30,4 +31,4 @@ pipeline {
             }
         }
     }
-}                    
+}
