@@ -3,9 +3,9 @@ pipeline {
         label 'LaravelAgent'
         tool 'LinuxGit'
         environment {
-        WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
-    }
-    
+            WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
+        }
+    } // <-- close agent block
 
     stages {
         stage('Build') {
@@ -21,7 +21,6 @@ pipeline {
                 // sh 'sed -i "s/DB_PORT=.*/DB_PORT=3306/" .env'
                 // sh 'sed -i "s/DB_DATABASE=*/DB_DATABASE=laravel/" .env'
                 // sh 'sed -i "s/DB_USERNAME=*/DB_USERNAME=root/" .env'
-
 
                 echo 'Installing dependencies...'
                 sh 'composer install'
@@ -43,8 +42,7 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 sh 'ansible-playbook -i inventory/hosts.ini deploy.yml'
-
             }
         }
-    }
-}
+    } // <-- close stages block
+} // <-- close pipeline block
