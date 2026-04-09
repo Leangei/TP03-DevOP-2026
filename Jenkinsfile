@@ -1,15 +1,11 @@
 pipeline {
     agent {
         label 'LaravelAgent'
-<<<<<<< HEAD
-	tool 'tools { git 'LinuxGit' }'
-=======
         tool 'LinuxGit'
         environment {
         WORKSPACE = '/home/jenkins/agent/workspace/Laravel-tp03'
     }
->>>>>>> e8d27adc3d1035b77e0d821cfcce636b6739937e
-    }
+    
 
     stages {
         stage('Build') {
